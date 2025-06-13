@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "mcpcsNodeApiDiscoveryServer": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
