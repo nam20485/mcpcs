@@ -58,12 +58,15 @@ namespace mcpcsApiDiscoveryServer
             using var forecastDocument = await client.ReadJsonDocumentAsync(forecastUrl);
             var periods = forecastDocument.RootElement.GetProperty("properties").GetProperty("periods").EnumerateArray();
 
-            return string.Join("\n---\n", periods.Select(period => $"""
+            return string.Join("\n---\n", periods.Select(period =>
+            {
+                return $"""
                 {period.GetProperty("name").GetString()}
                 Temperature: {period.GetProperty("temperature").GetInt32()}°F
                 Wind: {period.GetProperty("windSpeed").GetString()} {period.GetProperty("windDirection").GetString()}
                 Forecast: {period.GetProperty("detailedForecast").GetString()}
-                """));
+                """;
+            }));
         }
     }
 }
